@@ -58,7 +58,7 @@ body {
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea, #764ba2)
+    background: linear-gradient(135deg, #667eea, #5f3d81)
 }
 
 .lcard {
@@ -443,11 +443,11 @@ main {
 }
 
 .ld.o {
-    background: var(--green)
+    background: var(--yel)
 }
 
 .ld.c {
-    background: var(--purple)
+    background: var(--blue2)
 }
 
 .grid {
@@ -486,11 +486,11 @@ main {
 }
 
 .card.open {
-    border-top-color: var(--green)
+    border-top-color: var(--yel)
 }
 
 .card.closed {
-    border-top-color: var(--purple)
+    border-top-color: var(--blue2)
 }
 
 .ctop {
