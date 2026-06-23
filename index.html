@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issue Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <div id="pg-login" class="page active">
+        <div class="lcard">
+            <div class="llogo">
+                <div class="llogo-ico"><svg viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg></div>
+                <span>GitHub Issue Tracker</span>
+            </div>
+            <div class="lh1">Sign In</div>
+            <div class="lsub">Enter your credentials to access the dashboard</div>
+            <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="Enter username" /></div>
+            <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="Enter password" /></div>
+            <button class="btn-login" onclick="doLogin()">Sign In</button>
+            <div class="lerr" id="lerr">Invalid credentials. Please try again.</div>
+            <div class="demo" onclick="fillDemo()">
+                <span style="font-size:18px"></span>
+                <div>
+                    <div class="demo-lbl">Demo Credentials</div>
+                    <div class="demo-cr"><b>admin</b> / <b>admin123</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="pg-dash" class="page">
+        <nav>
+            <div class="nbrand">
+                <div class="nbrand-ico"><svg viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg></div>
+                GitHub Issue Tracker
+            </div>
+
+            <div class="nright">
+                <div class="sbox">
+                    <div class="sico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg></div>
+                    <input type="text" id="si" placeholder="Search issues..." />
+                    <button class="btn-s" onclick="doSearch()">Search</button>
+                </div>
+                <button class="btn-lo" onclick="doLogout()">Logout</button>
+            </div>
+        </nav>
+        <main>
+            <div class="dt">
+                <img src="./assets/Aperture.png" alt="">Issues Dashboard</div>
+            <div class="ds" id="ds">Loading...</div>
+            <div class="tcard">
+                <div class="ttop">
+                    <div class="tabs">
+                        <button class="tb active" id="tb-all" onclick="sw('all')">All <span class="tc"
+                                id="ca">0</span></button>
+                        <button class="tb" id="tb-open" onclick="sw('open')">Open <span class="tc"
+                                id="co">0</span></button>
+                        <button class="tb" id="tb-closed" onclick="sw('closed')">Closed <span class="tc"
+                                id="cc">0</span></button>
+                    </div>
+                    <div class="tleg">
+                        <div class="leg">
+                            <div class="ld o"></div>Open Issues
+                            <img src="./assets/Open-Status.png" alt="">
+                        </div>
+                        <div class="leg">
+                            <div class="ld c"></div>Closed Issues
+                            <img src="./assets/Closed- Status .png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid" id="grid">
+                <div class="ldr">
+                    <div class="spin"></div>
+                    <p class="ltxt">Fetching issues...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL -->
+    <div class="ov" id="ov">
+        <div class="modal">
+            <div id="mc"></div>
+        </div>
+    </div>
+<script src="/script.js"></script>
+    
+</body>
+
+</html>
